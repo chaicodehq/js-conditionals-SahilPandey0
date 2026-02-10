@@ -26,5 +26,38 @@
  * @returns {number} Total tax amount owed
  */
 export function calculateTax(income) {
-  // Your code here
+
+    if (income <= 0) {
+        return 0;
+    }
+
+    var tax = 0;
+
+    if (income > 10000) {
+        var bracket2Income;
+        if (income > 30000) {
+            bracket2Income = 30000 - 10000; // max in bracket 2
+        } else {
+            bracket2Income = income - 10000; // income within bracket 2
+        }
+        tax += bracket2Income * 0.10;
+    }
+
+    if (income > 30000) {
+        var bracket3Income;
+        if (income > 70000) {
+            bracket3Income = 70000 - 30000; // max in bracket 3
+        } else {
+            bracket3Income = income - 30000; // income within bracket 3
+        }
+        tax += bracket3Income * 0.20;
+    }
+
+    if (income > 70000) {
+        var bracket4Income = income - 70000;
+        tax += bracket4Income * 0.30;
+    }
+
+    return tax;
+
 }

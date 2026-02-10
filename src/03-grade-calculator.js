@@ -21,9 +21,33 @@
  *   - Then determine the letter grade from the adjusted score
  *
  * @param {number} score - The student's percentage score (0-100)
- * @param {boolean} hasExtraCredit - Whether the student has extra credit
+ * @param {boolean} hasExtraCredit - Whether the student has exitra credit
  * @returns {string} The letter grade or "INVALID"
  */
 export function calculateGrade(score, hasExtraCredit) {
-  // Your code here
+  // sabse pahle check karenge ki score valid ha ya nhi 
+  if(score < 0 || score > 100) {
+    return "INVALID";
+  }
+
+  // check hasExtraCreadit is true add 5 points
+  if(hasExtraCredit == true) {
+    score = score + 5;
+  }
+  if(score > 100) {
+    score = 100;
+  }
+
+  // Ab check karenge ki kisko kitna grade mila hai
+  if(score >= 90 && score <= 100) {
+    return "A";
+  } else if(score >= 80 && score <= 89) {
+    return "B"
+  } else if(score >= 70 && score <= 79) {
+    return "C";
+  } else if(score >= 60 && score <= 69) {
+    return "D"
+  } else if(score >= 0 && score <= 59) {
+    return "F"
+  }
 }

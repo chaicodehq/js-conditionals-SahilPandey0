@@ -23,5 +23,28 @@
  * @returns {number} The ticket price, or -1 for invalid input
  */
 export function getTicketPrice(age, isWeekend) {
-  // Your code here
+  
+  // check kar rhe hai ki age valid hai ya nhi
+  if(typeof age !== "number" || age<0) {
+    return -1;
+  }
+
+  // phir se check kerenge ki age kis catagery me aata hai
+  var amount = 0
+  if(age >= 0 && age <=12) {
+    amount = 8
+  } else if (age >= 13 && age <= 17) {
+    amount = 12
+  } else if (age >= 18 && age <= 59) {
+    amount = 15
+  } else {
+    amount = 10
+  }
+
+  // check kerenge ki weekend hai ki nhi
+  if(isWeekend == true) {
+    amount = amount + 3;
+  }
+
+  return amount;
 }
